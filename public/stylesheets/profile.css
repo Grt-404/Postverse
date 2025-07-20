@@ -1,0 +1,138 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+header h2 {
+    font-size: 28px;
+}
+
+.logout {
+    color: #ff4b5c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.logout:hover {
+    color: #ff1e3c;
+}
+
+/* New Post */
+.new-post h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.new-post textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.new-post button {
+    background-color: #4e9bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.new-post button:hover {
+    background-color: #347edd;
+}
+
+/* Old Posts */
+.old-posts h2 {
+    margin: 40px 0 20px;
+    font-size: 24px;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: transform 0.2s ease;
+}
+
+.post-card:hover {
+    transform: scale(1.01);
+}
+
+.post-card h4 {
+    font-size: 18px;
+    color: #91a7ff;
+    margin-bottom: 10px;
+}
+
+.post-card p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.post-actions a {
+    color: #58d68d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-actions a:hover {
+    color: #2ecc71;
+}
+
+.post-actions p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}

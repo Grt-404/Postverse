@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/edit.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <section class="new-post">
+            <h3>Edit your post</h3>
+            <form action="/edit/<%=post._id%>" method="POST">
+                <textarea placeholder="What's on your mind?" name="content" required><%=post.content%></textarea>
+                <button type="submit">update post</button>
+            </form>
+        </section>
+
+
+    </div>
+</body>
+
+</html>

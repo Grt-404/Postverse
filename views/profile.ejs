@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2>Hello, <%= user.name %> 👋</h2>
+            <a class="logout" href="/logout">Logout</a>
+        </header>
+
+        <section class="new-post">
+            <h3>Create a New Post</h3>
+            <form action="/post" method="POST">
+                <textarea placeholder="What's on your mind?" name="content" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+
+        <section class="old-posts">
+            <h2>Your Posts</h2>
+            <div class="post-container">
+                <!-- reverse isliye taaki latest post upar aaye -->
+                <% user.posts.slice().reverse().forEach((post)=> { %>
+                    <div class="post-card">
+                        <h4>
+                            <%= user.username %>
+                        </h4>
+                        <p>
+                            <%= post.content %>
+                        </p>
+                        <div class="post-actions">
+                            <a href="/edit/<%=post._id%>">✏️ Edit</a>
+                            <p>
+                                <%= post.likes.length %> likes
+                            </p>
+                            <a href="/like/<%= post._id %>">
+                                <%= post.likes.indexOf(user._id) !==-1 ? "Dislike" : "Like" %>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
