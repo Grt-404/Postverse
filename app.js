@@ -80,7 +80,7 @@ function isLoggedIn(req, res, next) {
     if (req.cookies.token === "") res.redirect("/login");
     else {
         let data = jwt.verify(req.cookies.token, "secret");
-        req.user = data;//hamne request mei user naam ka parameter add kar diya jise hamne dataa bola
+        req.user = data;/
         next();
     }
 
@@ -90,8 +90,7 @@ function isLoggedIn(req, res, next) {
 
 app.get('/profile', isLoggedIn, async (req, res) => {
     let user = await usermodel.findOne({ email: req.user.email }).populate("posts");
-    ;//kyuki abhi users mei post sirf ek id thi par aap chahte ho ki id na dikhe balki post dikhe, that is ow you handle this
-    //n Mongoose (MongoDB's Node.js ODM), the .populate() method is used to replace the IDs in an array with the actual referenced documents from another collection.
+   
     res.render("profile", { user });
 })
 //-------------------------------------------------------------
@@ -106,16 +105,16 @@ app.post('/post', isLoggedIn, async (req, res) => {
         content
     })
     user.posts.push(post._id);
-    await user.save();//jab bhi ham manually aise kaam karte hain in that case we need to save it
+    await user.save();
     res.redirect('/profile');
 })
 app.get('/like/:id', isLoggedIn, async (req, res) => {
     let post = await postmodel.findOne({ _id: req.params.id }).populate("user");
-    if (post.likes.indexOf(req.user.userid) === -1) {//ye -1 tab aata hai jab wo element present nhi hota
+    if (post.likes.indexOf(req.user.userid) === -1) {
         post.likes.push(req.user.userid);
     }
     else {
-        post.likes.splice(post.likes.indexOf(req.user.userid), 1);//else we will dislike that element
+        post.likes.splice(post.likes.indexOf(req.user.userid), 1);
     }
 
     await post.save();
