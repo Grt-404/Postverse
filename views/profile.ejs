@@ -10,6 +10,12 @@
 <body>
     <div class="container">
         <header>
+
+            <div name="DP">
+                <img src="/images/uploads/<%=user.dp%>">
+                <a class="change-dp" href="/profile/upload">Change profile picture</a>
+            </div>
+
             <h2>Hello, <%= user.name %> 👋</h2>
             <a class="logout" href="/logout">Logout</a>
         </header>

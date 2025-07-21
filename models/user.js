@@ -17,7 +17,11 @@ const userSchema = mongoose.Schema({
             ref: post
         }
     ],
-    password: String
+    password: String,
+    dp: {
+        type: String,
+        default: "default.jpg"
+    }
 });
 
 // prevent OverwriteModelError

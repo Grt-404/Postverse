@@ -4,9 +4,12 @@ const path = require('path');
 const cookieparser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+// const multer = require('multer');
+const upload = require('./config/multerconfig.js')
 
 const usermodel = require('./models/user.js');
 const postmodel = require('./models/post');
+// const crypto = require('crypto');
 
 app.use(cookieparser());
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +22,10 @@ app.set("view engine", "ejs");
 app.get('/', (req, res) => {
     res.render("index");
 })
+
+//understanding multer
+
+// ---------------------------
 app.post('/register', async (req, res) => {
 
     let { name, username, email, age, password } = req.body;
@@ -64,6 +71,9 @@ app.post('/login', async (req, res) => {
 app.get('/logout', (req, res) => {
     res.cookie("token", "");
     res.redirect('/login');
+})
+app.get('/profile/upload', isLoggedIn, (req, res) => {
+    res.render("test");
 })
 //metjod to have protected routes
 function isLoggedIn(req, res, next) {
@@ -126,6 +136,12 @@ app.post('/edit/:id', isLoggedIn, async (req, res) => {
 
 
 
+})
+app.post('/upload', upload.single("image"), isLoggedIn, async (req, res) => {
+    let user = await usermodel.findOne({ email: req.user.email });
+    user.dp = req.file.filename;
+    await user.save();
+    res.redirect('/profile')
 })
 app.listen(3000, (err) => {
     if (err) console.log("❌ Server error:", err);
